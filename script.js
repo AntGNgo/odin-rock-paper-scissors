@@ -13,7 +13,7 @@ const getComputerChoice = () => {
 };
 
 const round = (playerSelection, gameSelection) => {
-	const playerChoice = playerSelection.toLowerCase();
+	const playerChoice = playerSelection.toLowerCase().trim();
 	if (!'rockpaperscissors'.includes(playerChoice)) {
 		throw new Error('Player must enter valid move');
 	}
@@ -21,30 +21,43 @@ const round = (playerSelection, gameSelection) => {
 	console.log(`Computer chose: ${gameSelection}`);
 
 	if (playerChoice === gameSelection) {
-		return 'Draw';
+		console.log('Draw');
+		return;
 	}
 
 	if (gameSelection === 'rock') {
 		if (playerChoice === 'paper') {
-			return 'Player wins';
+			console.log('Player wins');
+			return;
 		} else {
-			return 'Computer wins';
+			console.log('Computer Wins');
+			return;
 		}
 	} else if (gameSelection === 'paper') {
 		if (playerChoice === 'scissors') {
-			return 'Player wins';
+			console.log('Player wins');
+			return;
 		} else {
-			return 'Computer wins';
+			console.log('Computer Wins');
+			return;
 		}
 	} else {
 		if (playerChoice === 'rock') {
-			return 'Player wins';
+			console.log('Player wins');
+			return;
 		} else {
-			return 'Computer wins';
+			console.log('Computer Wins');
+			return;
 		}
 	}
 };
 
-const result = round('Rock', getComputerChoice());
+const game = () => {
+	for (let i = 0; i < 5; i++) {
+		const playerInput = prompt('Rock, Paper, or Scissors?');
+		round(playerInput, getComputerChoice());
+	}
+	console.log('Game Over!');
+};
 
-console.log(result);
+game();
