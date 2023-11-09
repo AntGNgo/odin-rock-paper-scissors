@@ -9,12 +9,14 @@ const playerPaper = document.getElementById('player-paper');
 const playerScissors = document.getElementById('player-scissors');
 const vs = document.getElementById('vs');
 const winner = document.getElementById('winner');
+const playAgain = document.getElementById('play-again');
 
 let currentPlayerScore = 0;
 let currentComputerScore = 0;
 
 let gameOver = false;
 
+// Random int to determine computer choice
 const getComputerChoice = () => {
 	const randomChoice = Math.floor(Math.random() * 3);
 	switch (randomChoice) {
@@ -32,6 +34,7 @@ const getComputerChoice = () => {
 	}
 };
 
+// Single round - determines who wins
 const round = (playerSelection, gameSelection) => {
 	const playerChoice = playerSelection.toLowerCase().trim();
 	if (!'rockpaperscissors'.includes(playerChoice)) {
@@ -63,37 +66,35 @@ const round = (playerSelection, gameSelection) => {
 	}
 };
 
+// Clear board after round
 const clearBoard = () => {
 	playerChoice.setAttribute('src', '');
 	computerChoice.setAttribute('src', '');
 	vs.textContent = 'VS.';
 };
 
-// const game = () => {};
-
-const addScore = (results) => {
-	if (results === 0) {
-		vs.textContent = `Draw`;
-		return;
-	} else if (results === 1) {
-		currentPlayerScore++;
-		playerScore.textContent = `You: ${currentPlayerScore}`;
-		// vs.textContent = `You win`;
-		return;
-	} else {
-		currentComputerScore++;
-		computerScore.textContent = `Computer: ${currentComputerScore}`;
-		// vs.textContent = `Computer wins`;
-		return;
-	}
+// Runs if player click play again button
+const resetGame = () => {
+	clearBoard();
+	currentPlayerScore = 0;
+	currentComputerScore = 0;
+	playerScore.textContent = `You: 0`;
+	computerScore.textContent = `Computer: 0`;
+	playerOptions.classList.toggle('hidden');
+	computerOptions.classList.toggle('hidden');
+	vs.classList.toggle('hidden');
+	winner.classList.toggle('hidden');
+	playAgain.classList.toggle('hidden');
 };
 
+// Check win after every round
 const checkWin = () => {
 	if (currentPlayerScore >= 3 || currentComputerScore >= 3) {
-		playerOptions.classList.toggle('none');
-		computerOptions.classList.toggle('none');
-		vs.classList.toggle('none');
-		winner.classList.toggle('none');
+		playerOptions.classList.toggle('hidden');
+		computerOptions.classList.toggle('hidden');
+		vs.classList.toggle('hidden');
+		winner.classList.toggle('hidden');
+		playAgain.classList.toggle('hidden');
 		if (currentPlayerScore > currentComputerScore) {
 			winner.textContent = `Game Over - Player Wins!`;
 		} else {
@@ -102,33 +103,39 @@ const checkWin = () => {
 	}
 };
 
-// const playerChoiceListener = () => {
-// 	playerChoice.setAttribute('src', './assets/rock.png');
-// 	let results = round('rock', getComputerChoice());
-// 	addScore(results);
-// 	setTimeout(clearBoard, 2000);
-// };
+// Adds up score after round - updates score on DOM
+const addScore = (results) => {
+	if (results === 0) {
+		return;
+	} else if (results === 1) {
+		currentPlayerScore++;
+		playerScore.textContent = `You: ${currentPlayerScore}`;
+		checkWin();
+		// vs.textContent = `You win`;
+	} else {
+		currentComputerScore++;
+		computerScore.textContent = `Computer: ${currentComputerScore}`;
+		checkWin();
+		// vs.textContent = `Computer wins`;
+	}
+};
+
+playAgain.addEventListener('click', resetGame);
 
 playerRock.addEventListener('click', () => {
 	playerChoice.setAttribute('src', './assets/rock.png');
 	let results = round('rock', getComputerChoice());
 	addScore(results);
-	setTimeout(clearBoard, 2000);
-	checkWin();
 });
 
 playerPaper.addEventListener('click', () => {
 	playerChoice.setAttribute('src', './assets/paper.png');
 	let results = round('paper', getComputerChoice());
 	addScore(results);
-	setTimeout(clearBoard, 2000);
-	checkWin();
 });
 
 playerScissors.addEventListener('click', () => {
 	playerChoice.setAttribute('src', './assets/scissors.png');
 	let results = round('scissors', getComputerChoice());
 	addScore(results);
-	setTimeout(clearBoard, 2000);
-	checkWin();
 });
