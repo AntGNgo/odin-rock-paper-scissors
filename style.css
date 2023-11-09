@@ -4,13 +4,10 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	width: 70vw;
 	margin: 0 auto;
-	/* background-color: black;
-	color: white; */
 }
 
 h1 {
 	font-size: 48px;
-	/* text-align: center; */
 }
 
 #game-board {
