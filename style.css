@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:ital,wght@0,400;0,900;1,300&family=Work+Sans:wght@300;400&display=swap');
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	margin: 0 200px;
+	/* background-color: black;
+	color: white; */
+}
+
+h1 {
+	font-size: 48px;
+	text-align: center;
+}
+#game-board {
+	display: flex;
+	justify-content: space-between;
+}
+
+#player-side,
+#computer-side {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+	width: 500px;
+}
+
+#player-choice,
+#computer-choice {
+	width: 100px;
+	height: 100px;
+	border: 3px solid rgba(128, 128, 128, 0.698);
+	border-radius: 10px;
+}
+
+#player-options,
+#computer-options {
+	display: flex;
+	gap: 40px;
+}
+
+#player-options img,
+#computer-options img {
+	padding: 10px;
+	border: 3px solid rgba(128, 128, 128, 0.698);
+	border-radius: 10px;
+}
+
+#player-options img:hover,
+#computer-options img:hover {
+	transform: scale(1.05);
+}
+
+#player-options img:active,
+#computer-options img:active {
+	transform: scale(1.01);
+}
+
+#player-score,
+#computer-score {
+	font-size: 36px;
+}
+
+#vs {
+	align-self: center;
+	font-size: 36px;
+}

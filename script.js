@@ -1,3 +1,10 @@
+const playerScore = document.getElementById('player-score');
+const computerScore = document.getElementById('computer-score');
+const playerChoice = document.getElementById('player-choice');
+const playerRock = document.getElementById('player-rock');
+const playerPaper = document.getElementById('player-paper');
+const playerScissors = document.getElementById('player-scissors');
+
 const getComputerChoice = () => {
 	const randomChoice = Math.floor(Math.random() * 3);
 	switch (randomChoice) {
@@ -17,45 +24,51 @@ const round = (playerSelection, gameSelection) => {
 	if (!'rockpaperscissors'.includes(playerChoice)) {
 		throw new Error('Player must enter valid move');
 	}
-	console.log(`Player chose: ${playerChoice}`);
-	console.log(`Computer chose: ${gameSelection}`);
 
 	if (playerChoice === gameSelection) {
-		console.log('Draw');
-		return;
+		return 0;
 	}
 
 	if (gameSelection === 'rock') {
 		if (playerChoice === 'paper') {
-			console.log('Player wins');
-			return;
+			return 1;
 		} else {
-			console.log('Computer Wins');
-			return;
+			return -1;
 		}
 	} else if (gameSelection === 'paper') {
 		if (playerChoice === 'scissors') {
-			console.log('Player wins');
-			return;
+			return 1;
 		} else {
-			console.log('Computer Wins');
-			return;
+			return -1;
 		}
 	} else {
 		if (playerChoice === 'rock') {
-			console.log('Player wins');
-			return;
+			return 1;
 		} else {
-			console.log('Computer Wins');
-			return;
+			return -1;
 		}
 	}
 };
 
 const game = () => {
-	for (let i = 0; i < 5; i++) {
-		const playerInput = prompt('Rock, Paper, or Scissors?');
-		round(playerInput, getComputerChoice());
-	}
-	console.log('Game Over!');
+	let currentPlayerScore = 0;
+	let currentComputerScore = 0;
+
+	playerRock.addEventListener('click', () => {
+		playerChoice.setAttribute('src', './assets/rock.png');
+		let results = round('rock', getComputerChoice());
+		console.log(results);
+	});
+
+	playerPaper.addEventListener('click', () => {
+		playerChoice.setAttribute('src', './assets/paper.png');
+		let results = round('paper', getComputerChoice());
+	});
+
+	playerScissors.addEventListener('click', () => {
+		playerChoice.setAttribute('src', './assets/scissors.png');
+		let results = round('scissors', getComputerChoice());
+	});
 };
+
+game();
