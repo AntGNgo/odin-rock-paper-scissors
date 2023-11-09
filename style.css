@@ -7,10 +7,6 @@ body {
 	color: white; */
 }
 
-.hidden {
-	display: none;
-}
-
 h1 {
 	font-size: 48px;
 	text-align: center;
@@ -67,8 +63,36 @@ h1 {
 
 #center {
 	align-self: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
 }
 
 #vs {
 	font-size: 36px;
+}
+
+#winner {
+	font-size: 24px;
+}
+
+#play-again {
+	background-color: white;
+	font-size: 16px;
+	border: 1px solid black;
+	padding: 10px 15px;
+	border-radius: 8px;
+}
+
+#play-again:hover {
+	transform: scale(1.05);
+}
+
+#play-again:active {
+	transform: scale(1.01);
+}
+
+.hidden {
+	display: none !important;
 }
