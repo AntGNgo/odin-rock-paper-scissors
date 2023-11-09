@@ -64,40 +64,49 @@ const clearBoard = () => {
 	vs.textContent = 'VS.';
 };
 
-const game = () => {
-	const addScore = (results) => {
-		if (results === 0) {
-			vs.textContent = `Draw`;
-			return;
-		} else if (results === 1) {
-			currentPlayerScore++;
-			playerScore.textContent = `You: ${currentPlayerScore}`;
-			vs.textContent = `You win`;
-		} else {
-			currentComputerScore++;
-			computerScore.textContent = `Computer: ${currentComputerScore}`;
-			vs.textContent = `Computer wins`;
-		}
-	};
+// const game = () => {};
 
-	playerRock.addEventListener('click', () => {
-		playerChoice.setAttribute('src', './assets/rock.png');
-		let results = round('rock', getComputerChoice());
-		addScore(results);
-		setTimeout(clearBoard, 2000);
-	});
-
-	playerPaper.addEventListener('click', () => {
-		playerChoice.setAttribute('src', './assets/paper.png');
-		let results = round('paper', getComputerChoice());
-		addScore(results);
-		setTimeout(clearBoard, 2000);
-	});
-
-	playerScissors.addEventListener('click', () => {
-		playerChoice.setAttribute('src', './assets/scissors.png');
-		let results = round('scissors', getComputerChoice());
-		addScore(results);
-		setTimeout(clearBoard, 2000);
-	});
+const addScore = (results) => {
+	if (results === 0) {
+		vs.textContent = `Draw`;
+		return;
+	} else if (results === 1) {
+		currentPlayerScore++;
+		playerScore.textContent = `You: ${currentPlayerScore}`;
+		vs.textContent = `You win`;
+		return;
+	} else {
+		currentComputerScore++;
+		computerScore.textContent = `Computer: ${currentComputerScore}`;
+		vs.textContent = `Computer wins`;
+		return;
+	}
 };
+
+const playerChoiceListener = () => {
+	playerChoice.setAttribute('src', './assets/rock.png');
+	let results = round('rock', getComputerChoice());
+	addScore(results);
+	setTimeout(clearBoard, 2000);
+};
+
+playerRock.addEventListener('click', () => {
+	playerChoice.setAttribute('src', './assets/rock.png');
+	let results = round('rock', getComputerChoice());
+	addScore(results);
+	setTimeout(clearBoard, 2000);
+});
+
+playerPaper.addEventListener('click', () => {
+	playerChoice.setAttribute('src', './assets/paper.png');
+	let results = round('paper', getComputerChoice());
+	addScore(results);
+	setTimeout(clearBoard, 2000);
+});
+
+playerScissors.addEventListener('click', () => {
+	playerChoice.setAttribute('src', './assets/scissors.png');
+	let results = round('scissors', getComputerChoice());
+	addScore(results);
+	setTimeout(clearBoard, 2000);
+});
