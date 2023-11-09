@@ -10,12 +10,11 @@ body {
 
 h1 {
 	font-size: 48px;
-	text-align: center;
+	/* text-align: center; */
 }
 
 #game-board {
 	display: flex;
-	justify-content: space-between;
 }
 
 #player-side,
