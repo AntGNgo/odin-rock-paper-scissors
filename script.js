@@ -59,5 +59,3 @@ const game = () => {
 	}
 	console.log('Game Over!');
 };
-
-game();
