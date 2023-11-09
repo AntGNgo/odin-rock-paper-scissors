@@ -15,6 +15,7 @@ h1 {
 
 #game-board {
 	display: flex;
+	justify-content: space-between;
 }
 
 #player-side,
