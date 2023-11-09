@@ -2,7 +2,8 @@
 
 body {
 	font-family: 'Open Sans', sans-serif;
-	margin: 0 200px;
+	width: 70vw;
+	margin: 0 auto;
 	/* background-color: black;
 	color: white; */
 }
@@ -11,6 +12,7 @@ h1 {
 	font-size: 48px;
 	text-align: center;
 }
+
 #game-board {
 	display: flex;
 	justify-content: space-between;
@@ -20,6 +22,7 @@ h1 {
 #computer-side {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	align-items: center;
 	gap: 30px;
 	width: 500px;
@@ -27,10 +30,19 @@ h1 {
 
 #player-choice,
 #computer-choice {
+	width: 200px;
+	height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.choice-image {
 	width: 100px;
 	height: 100px;
 	border: 3px solid rgba(128, 128, 128, 0.698);
 	border-radius: 10px;
+	padding: 10px;
 }
 
 #player-options,

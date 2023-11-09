@@ -16,15 +16,23 @@ let currentComputerScore = 0;
 
 let gameOver = false;
 
+const addChoiceImage = (activePlayer, choice) => {
+	activePlayer.textContent = '';
+	const imgTag = document.createElement('img');
+	imgTag.classList.add('choice-image');
+	imgTag.setAttribute('src', `./assets/${choice}.png`);
+	activePlayer.appendChild(imgTag);
+};
+
 // Random int to determine computer choice
 const getComputerChoice = () => {
 	const randomChoice = Math.floor(Math.random() * 3);
 	switch (randomChoice) {
 		case 0:
-			computerChoice.setAttribute('src', './assets/rock.png');
+			addChoiceImage(computerChoice, 'rock');
 			return 'rock';
 		case 1:
-			computerChoice.setAttribute('src', './assets/paper.png');
+			addChoiceImage(computerChoice, 'paper');
 			return 'paper';
 		case 2:
 			computerChoice.setAttribute('src', './assets/scissors.png');
@@ -123,19 +131,19 @@ const addScore = (results) => {
 playAgain.addEventListener('click', resetGame);
 
 playerRock.addEventListener('click', () => {
-	playerChoice.setAttribute('src', './assets/rock.png');
+	addChoiceImage(playerChoice, 'rock');
 	let results = round('rock', getComputerChoice());
 	addScore(results);
 });
 
 playerPaper.addEventListener('click', () => {
-	playerChoice.setAttribute('src', './assets/paper.png');
+	addChoiceImage(playerChoice, 'paper');
 	let results = round('paper', getComputerChoice());
 	addScore(results);
 });
 
 playerScissors.addEventListener('click', () => {
-	playerChoice.setAttribute('src', './assets/scissors.png');
+	addChoiceImage(playerChoice, 'scissors');
 	let results = round('scissors', getComputerChoice());
 	addScore(results);
 });
