@@ -7,6 +7,10 @@ body {
 	color: white; */
 }
 
+.hidden {
+	display: none;
+}
+
 h1 {
 	font-size: 48px;
 	text-align: center;
@@ -61,7 +65,10 @@ h1 {
 	font-size: 36px;
 }
 
-#vs {
+#center {
 	align-self: center;
+}
+
+#vs {
 	font-size: 36px;
 }
