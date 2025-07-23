@@ -1,6 +1,20 @@
 let humanScore = 0;
 let computerScore = 0;
 
+let rock = document.querySelector('.rock');
+let paper = document.querySelector('.paper');
+let scissors = document.querySelector('.scissors');
+
+let choices = [rock, paper, scissors];
+let humanChoice = '';
+
+choices.forEach((choice) => {
+	choice.addEventListener('click', () => {
+		humanChoice = choice.textContent.toLowerCase();
+		console.log(humanChoice);
+	});
+});
+
 const getComputerChoice = () => {
 	const choice = Math.floor(Math.random() * 3);
 	switch (choice) {
@@ -15,10 +29,7 @@ const getComputerChoice = () => {
 	}
 };
 
-const getHumanChoice = () => {
-	const choice = prompt('Choice: ');
-	return choice.toLocaleLowerCase();
-};
+const getHumanChoice = () => {};
 
 const playRound = (humanChoice, computerChoice) => {
 	if (humanChoice === computerChoice) {
@@ -44,19 +55,6 @@ const playRound = (humanChoice, computerChoice) => {
 	}
 };
 
-const playGame = () => {
-	while (true) {
-		let humanSelection = getHumanChoice();
-		let computerSelection = getComputerChoice();
-		playRound(humanSelection, computerSelection);
-		console.log(`You: ${humanScore} | Computer: ${computerScore}`);
-		if (humanScore === 3 || computerScore === 3) {
-			break;
-		}
-	}
-	console.log(
-		`Game Over! Final Score: You: ${humanScore} | Computer: ${computerScore}`
-	);
-};
+const playGame = () => {};
 
 playGame();
