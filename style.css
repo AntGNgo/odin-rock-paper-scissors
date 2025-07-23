@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+	font-family: 'Roboto';
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 70vw;
+	margin: 0 auto;
+}
+
+.play-area {
+	display: flex;
+	gap: 250px;
+}
+
+.vs {
+	align-self: center;
+	font-size: 3rem;
+}
+
+.player,
+.computer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.player-choice,
+.computer-choice {
+	border: 2px solid black;
+	width: 200px;
+	height: 200px;
+}
+
+.player-options {
+	display: flex;
+	margin-top: 30px;
+	gap: 20px;
+}
+
+.rock,
+.paper,
+.scissors {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100px;
+	width: 100px;
+	border: 1px solid black;
+}
+
+.option:hover {
+	cursor: pointer;
+	background-color: aqua;
+}
